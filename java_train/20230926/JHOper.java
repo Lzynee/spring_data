@@ -6,7 +6,7 @@ public class JHOper {
         int sum = 0;
 
         System.out.println("a = " + a + "  sum = " + sum);
-
+        
         sum = ++a + ++a;
 
         System.out.println("a = " + a + "  sum = " + sum);

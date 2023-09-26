@@ -12,7 +12,7 @@ public class MyCondition {
         } else {
             pan = "하";
         }
-
+        
         System.out.println(pan + " 입니다.");
     }
 }
