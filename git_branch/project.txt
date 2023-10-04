@@ -17,4 +17,5 @@ function master() {
 
 function develop() {
 	1
+	2
 }
