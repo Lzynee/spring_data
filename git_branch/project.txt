@@ -1,3 +1,9 @@
+function frelease() {
+	1
+	2
+	3
+	4
+}
 
 
 
