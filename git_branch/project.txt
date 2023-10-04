@@ -9,3 +9,30 @@ function master() {
 	#1
 	#2
 }
+
+
+
+
+
+
+
+function develop() {
+	1
+	2
+	3
+	4
+	5
+	6
+}
+
+
+
+
+
+
+
+function nrelease() {
+	1
+	2
+	3
+}
