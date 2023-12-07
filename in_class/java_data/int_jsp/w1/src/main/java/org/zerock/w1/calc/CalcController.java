@@ -23,5 +23,7 @@ public class CalcController extends HttpServlet {
         // 콘솔에 출력시켜 동작을 확인한다.
         System.out.printf(" num1: %s", num1);
         System.out.printf(" num2: %s", num2);
+
+        resp.sendRedirect("/index");
     }
 }
