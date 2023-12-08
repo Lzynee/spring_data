@@ -1,9 +1,6 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: sec
-  Date: 2023-12-08
-  Time: 오전 9:37
-  To change this template use File | Settings | File Templates.
+  TodoService에서 제공하는 List<TodoDTO>를
+  TodoListController에서 전달 받아서 화면에 표시한다.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -12,5 +9,7 @@
 </head>
 <body>
   <h1>List Page</h1>
+
+  ${ list }
 </body>
 </html>
