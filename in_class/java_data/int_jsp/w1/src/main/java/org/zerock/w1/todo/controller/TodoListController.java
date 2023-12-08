@@ -2,7 +2,7 @@
  * GET 방식만 처리
  * */
 
-package org.zerock.w1.todo;
+package org.zerock.w1.todo.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
