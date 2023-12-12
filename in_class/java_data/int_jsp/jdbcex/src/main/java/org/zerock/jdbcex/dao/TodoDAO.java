@@ -130,4 +130,39 @@ public class TodoDAO {
 
         return vo;
     }
+
+    // 삭제 기능 구현
+    // 특정한 번호(tno)의 데이터를 삭제한다.
+    public void deleteOne(Long tno) throws Exception {
+
+        String sql = "delete from tbl_todo where tno = ?";
+
+        @Cleanup Connection connection
+                = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement
+                = connection.prepareStatement(sql);
+
+        preparedStatement.setLong(1, tno);
+
+        preparedStatement.executeUpdate();
+    }
+
+    // 수정 기능 구현
+    // 특정한 번호(tno)의 데이터를 업데이트한다.
+    public void updateOne(TodoVO vo) throws Exception {
+        String sql = "UPDATE tbl_todo set title=?, dueDate=?, finished=? " +
+                " WHERE tno=?";
+
+        @Cleanup Connection connection
+                = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement
+                = connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, vo.getTitle());
+        preparedStatement.setDate(2, Date.valueOf(vo.getDueDate()));
+        preparedStatement.setBoolean(3, vo.isFinished());
+        preparedStatement.setLong(4, vo.getTno());
+
+        preparedStatement.executeUpdate();  // DML을 실행하는 경우 executeUpdate()를 실행
+    }
 }
