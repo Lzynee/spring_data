@@ -33,4 +33,16 @@ public enum TodoService {  // 싱글톤 패턴: 객체를 하나만 생성해서
 
         return todoDTOS;
     }
+
+    // 특정 번호 조회 기능
+    public TodoDTO get(Long tno) {
+
+        TodoDTO dto = new TodoDTO();
+        dto.setTno(tno);
+        dto.setTitle("Sample Todo");
+        dto.setDueDate(LocalDate.now());
+        dto.setFinished(true);
+
+        return dto;
+    }
 }
