@@ -5,10 +5,14 @@
 package org.zerock.jdbcex.dao;
 
 import lombok.Cleanup;
+import org.zerock.jdbcex.domain.TodoVO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TodoDAO {
 
@@ -49,5 +53,53 @@ public class TodoDAO {
         String now = resultSet.getString(1);
 
         return now;
+    }
+
+    // 등록 기능 구현
+    public void insert(TodoVO vo) throws Exception {
+        String sql = "INSERT INTO tbl_todo (title, dueDate, finished)" +
+                " VALUES (?, ?, ?)";
+
+        @Cleanup Connection connection
+                = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement
+                = connection.prepareStatement(sql);
+
+        // sql의 컬럼 인덱스는 1부터 시작
+        preparedStatement.setString(1, vo.getTitle());
+        preparedStatement.setDate(2, Date.valueOf(vo.getDueDate()));
+        preparedStatement.setBoolean(3, vo.isFinished());
+
+        preparedStatement.executeUpdate();  // DML을 실행하는 경우 executeUpdate()를 실행
+    }
+
+    // 목록 기능 구현
+    // tbl_todo 내의 모든 데이터를 가져온다.
+    // 테이블의 각 행이 하나의 TodoVO객체가 됨 => 모든 TodoVO를 List<TodoVO>에 담아 리턴한다.
+    public List<TodoVO> selectAll() throws Exception {
+
+        String sql = "select * from tbl_todo";
+
+        @Cleanup Connection connection
+                = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement
+                = connection.prepareStatement(sql);
+        @Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<TodoVO> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+
+            TodoVO vo = TodoVO.builder()
+                    .tno(resultSet.getLong("tno"))
+                    .title(resultSet.getString("title"))
+                    .dueDate(resultSet.getDate("dueDate").toLocalDate())
+                    .finished(resultSet.getBoolean("finished"))
+                    .build();
+
+            list.add(vo);
+        }
+
+        return list;
     }
 }
