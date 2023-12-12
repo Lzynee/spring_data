@@ -102,4 +102,32 @@ public class TodoDAO {
 
         return list;
     }
+
+    // 조회 기능 구현
+    // 특정한 번호(tno)의 데이터만 가져온다.
+
+    public TodoVO selectOne(Long tno) throws Exception {
+
+        String sql = "select * from tbl_todo where tno = ?";
+
+        @Cleanup Connection connection
+                = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement
+                = connection.prepareStatement(sql);
+
+        preparedStatement.setLong(1, tno);
+
+        @Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();  // 한 행의 데이터만 출력하므로 resultSt.next()의 실행 횟수는 최초 1번
+
+        TodoVO vo = TodoVO.builder()
+                .tno(resultSet.getLong("tno"))
+                .title(resultSet.getString("title"))
+                .dueDate(resultSet.getDate("dueDate").toLocalDate())
+                .finished(resultSet.getBoolean("finished"))
+                .build();
+
+        return vo;
+    }
 }
