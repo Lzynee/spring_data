@@ -29,8 +29,9 @@ public enum TodoService {
 
         TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
 
-        System.out.println("todoVO: " + todoVO);  // 변환 여부 확인
-
+        // sout 출력문 대신 log 명령어로 동작을 콘솔에서 확인
+//        System.out.println("todoVO: " + todoVO);  // 변환 여부 확인
+        log.info(todoVO);
         // TodoDAO를 이용해서 insert()를 실행하고 TodoVO를 등록한다.
         dao.insert(todoVO);  // int를 반환하므로 이를 이용해서 예외처리도 가능
 
