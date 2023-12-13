@@ -1,8 +1,7 @@
 package org.zerock.w2.dao;
 
 import lombok.Cleanup;
-import org.checkerframework.checker.units.qual.C;
-import org.zerock.w2.dto.MemberVO;
+import org.zerock.w2.domain.MemberVO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
