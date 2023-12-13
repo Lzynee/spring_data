@@ -4,7 +4,7 @@
 
 package org.zerock.w2.controller;
 
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.zerock.w2.dto.MemberDTO;
 import org.zerock.w2.service.MemberService;
 
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/login")
-@Log
+@Log4j2
 public class LoginController extends HttpServlet {
 
     // 로그인 화면 출력

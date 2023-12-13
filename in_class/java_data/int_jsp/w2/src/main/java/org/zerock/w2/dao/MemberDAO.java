@@ -11,7 +11,7 @@ public class MemberDAO {
 
     public MemberVO getWithPassword(String mid, String mpw) throws Exception {
 
-        String query = "select mid, mpw, maname " +
+        String query = "select mid, mpw, mname " +
                 " from tbl_member " +
                 " where mid = ? and mpw = ?";
 
