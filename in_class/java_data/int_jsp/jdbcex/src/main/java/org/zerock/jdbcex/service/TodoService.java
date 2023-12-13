@@ -62,4 +62,22 @@ public enum TodoService {
 
         return todoDTO;
     }
+
+    /* 수정/삭제 기능 구현 */
+    // 삭제 기능 구현
+    public void remove(long tno) throws Exception {
+
+        log.info("tno: " + tno);
+        dao.deleteOne(tno);
+    }
+
+    // 수정 기능 구현
+    public void modify(TodoDTO todoDTO) throws Exception {
+
+        log.info("todoDTO: " + todoDTO);
+
+        TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
+
+        dao.updateOne(todoVO);
+    }
 }
