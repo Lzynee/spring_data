@@ -1,4 +1,4 @@
-package org.zerock.w2.dto;
+package org.zerock.w2.domain;
 
 import lombok.*;
 
