@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class memberVO {
+public class MemberVO {
 
     private String mid;
     private String mpw;
