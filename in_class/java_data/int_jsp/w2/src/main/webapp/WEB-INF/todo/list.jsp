@@ -7,6 +7,10 @@
 </head>
 <body>
   <h1>Todo List</h1>
+  
+  <%-- 테스트 코드 추가 : 현재 로그인한 사용자의 이름을 확인 --%>
+  <h2>${loginInfo}</h2>
+  <h3>${loginInfo.mname}</h3>
 
   <ul>
     <c:forEach items="${dtoList}" var="dto">
