@@ -19,6 +19,7 @@ public class TodoRegisterController extends HttpServlet {
     private final DateTimeFormatter DATEFORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     // 입력 화면으로 포워드한다.
+    // 로그인한 사용자만이 Todo를 등록할 수 있도록 한다.
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
