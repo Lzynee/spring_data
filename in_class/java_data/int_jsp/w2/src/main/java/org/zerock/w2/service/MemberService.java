@@ -31,4 +31,10 @@ public enum MemberService {
         return memberDTO;
     }
     // login(mid, mpw)
+
+    // 자동 로그인 처리
+    public void updateUuid(String mid, String uuid) throws Exception {
+        dao.updateUuid(mid, uuid);
+    }
+    // 자동 로그인 처리 메소드 끝
 }

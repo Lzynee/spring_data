@@ -36,4 +36,17 @@ public class MemberDAO {
 
         return memberVO;
     }
+
+    // rememberMe == true => tbl_member 테이블 내 사용자 정보에서 uuid 값을 수정한다.
+    public void updateUuid(String mid, String uuid) throws Exception {
+        String sql = "UPDATE tbl_member SET uuid=? WHERE mid=?";
+
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement =
+                connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, uuid);
+        preparedStatement.setString(2, mid);
+        preparedStatement.executeUpdate();
+    }
 }
