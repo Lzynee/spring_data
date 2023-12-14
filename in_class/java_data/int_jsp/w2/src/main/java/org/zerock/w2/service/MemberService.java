@@ -37,4 +37,15 @@ public enum MemberService {
         dao.updateUuid(mid, uuid);
     }
     // 자동 로그인 처리 메소드 끝
+
+    // 쿠키의 값을 이용한 사용자 조회
+    public MemberDTO getByUUID(String uuid) throws Exception {
+
+        MemberVO vo = dao.selectUUID(uuid);
+
+        MemberDTO memberDTO = modelMapper.map(vo, MemberDTO.class);
+
+        return memberDTO;
+    }
+    // 쿠키의 값을 이용한 사용자 조회 메소드 끝
 }

@@ -49,4 +49,31 @@ public class MemberDAO {
         preparedStatement.setString(2, mid);
         preparedStatement.executeUpdate();
     }
+
+    // 쿠키의 값을 이용한 사용자 조회
+    // 쿠키 안에 UUID로 생성된 값을 이용해서 해당 사용자의 정보를 로딩해 온다.
+    public MemberVO selectUUID(String uuid) throws Exception {
+
+        String query = "SELECT mid, mpw, mname, uuid " +
+                " FROM tbl_member " +
+                " WHERE uuid = ?";
+
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement =
+                connection.prepareStatement(query);
+        preparedStatement.setString(1, uuid);
+
+        @Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        MemberVO memberVO = MemberVO.builder()
+                .mid(resultSet.getString(1))
+                .mpw(resultSet.getString(2))
+                .mname(resultSet.getString(3))
+                .uuid(resultSet.getString(4))
+                .build();
+
+        return memberVO;
+    }
 }
