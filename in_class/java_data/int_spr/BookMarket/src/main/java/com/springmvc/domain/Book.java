@@ -1,30 +1,27 @@
 package com.springmvc.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 @Getter
 @Setter
-//@AllArgsConstructor
 @NoArgsConstructor
 public class Book {
-    private String bookId;  // 도서ID
-    private String name;  // 도서명
-    private int unitPrice;  // 가격
-    private String author;  // 저자
-    private String description;  // 설명
-    private String publisher;  // 출판사
-    private String category;  // 분류
-    private long unitsInStock;  // 재고 수
-    private String releaseDate;  // 출판일(월/년)
-    private String condition;  // 신규 도서 || 중고 도서 || 전자책
+    private String bookId;         // 도서 ID
+    private String name;           // 도서명
+    private int unitPrice;         // 가격
+    private String author;         // 저자
+    private String description;    // 설명
+    private String publisher;      // 출판사
+    private String catagory;       // 분류
+    private int unitsInStock;      // 재고 수
+    private String releaseDate;    // 출판일(월/년)
+    private String condition;      // 신규 도서 또는 중고 도서 또는 전자책
 
-    // 일반 생성자 추가
     public Book(String bookId, String name, int unitPrice) {
         this.bookId = bookId;
         this.name = name;
         this.unitPrice = unitPrice;
     }
+
 }
