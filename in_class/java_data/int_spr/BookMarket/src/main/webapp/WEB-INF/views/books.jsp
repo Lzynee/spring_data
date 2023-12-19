@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
     <title>도서 목록</title>
 </head>
 <body>
@@ -11,7 +11,7 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-barnd" href="./home">Home</a>
+            <a class="navbar-brand" href="./home">Home</a>
         </div>
     </div>
     </nav>

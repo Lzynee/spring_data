@@ -55,4 +55,25 @@ public class BookRepositoryImpl implements BookRepository {
     public List<Book> getAllBookList() {
         return listOfBooks;
     }
+
+    // 도서 분야와 일치하는 목록 출력 메서드 추가
+    @Override
+    public List<Book> getBookListByCategory(String category) {
+        // 일치하는 도서 분야를 저장하는 객체 변수 선언
+        List<Book> booksByCategory = new ArrayList<Book>();
+
+        for (int i = 0; i < listOfBooks.size(); i++) {
+
+            // book에 도서 목록의 i번째 도서 정보를 저장
+            Book book = listOfBooks.get(i);
+
+            // booksByCategory에 저장 시 대소문자 구분 무시
+            if (category.equalsIgnoreCase(book.getCatagory()))
+                booksByCategory.add(book);
+
+        }
+
+        return booksByCategory;
+
+    }
 }
